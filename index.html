@@ -39,11 +39,20 @@
             color: white;
             text-shadow: 2px 2px 0 black;
         }
+        #gameOverScreen {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            display: none;
+        }
     </style>
 </head>
 <body>
     <div id="gameArea"></div>
-    <div id="scoreDisplay">0</div><script>
+    <div id="scoreDisplay">0</div>
+    <img id="gameOverScreen" src="gameover.png"><script>
     const gameArea = document.getElementById("gameArea");
     const scoreDisplay = document.getElementById("scoreDisplay");
 
@@ -158,6 +167,7 @@
 
         if (detectCollision()) {
             dieSound.play();
+            document.getElementById('gameOverScreen').style.display = 'block';
             music.pause();
             gameOver = true;
             alert("Game Over! Score: " + score);
